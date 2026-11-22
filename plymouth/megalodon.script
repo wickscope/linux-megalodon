@@ -1,0 +1,77 @@
+# Linux Megalodon boot splash. Colours = FLIPPER X (#060d0b bg, #2bd48a accent).
+# It MUST draw the LUKS passphrase prompt, or full-disk encryption asks blind.
+
+Window.SetBackgroundTopColor(0.024, 0.051, 0.043);
+Window.SetBackgroundBottomColor(0.024, 0.051, 0.043);
+
+cx = Window.GetX() + Window.GetWidth() / 2;
+cy = Window.GetY() + Window.GetHeight() / 2;
+
+logo.image = Image("logo.png");
+logo.sprite = Sprite(logo.image);
+logo.sprite.SetX(cx - logo.image.GetWidth() / 2);
+logo.sprite.SetY(cy - logo.image.GetHeight() / 2 - 60);
+
+title.image = Image.Text("L I N U X   M E G A L O D O N", 0.169, 0.831, 0.541, 1, "DejaVu Sans Mono Bold 14");
+title.sprite = Sprite(title.image);
+title.sprite.SetX(cx - title.image.GetWidth() / 2);
+title.sprite.SetY(cy + logo.image.GetHeight() / 2 - 30);
+
+# progress bar: a dim track and a bright fill scaled by progress
+bar_w = 320;
+bar_y = cy + logo.image.GetHeight() / 2 + 10;
+track.image = Image("bar.png").Scale(bar_w, 3);
+track.sprite = Sprite(track.image);
+track.sprite.SetX(cx - bar_w / 2);
+track.sprite.SetY(bar_y);
+track.sprite.SetOpacity(0.25);
+fill.base = Image("bar.png");
+fill.sprite = Sprite();
+fill.sprite.SetX(cx - bar_w / 2);
+fill.sprite.SetY(bar_y);
+
+fun progress_cb(duration, progress) {
+  w = Math.Int(bar_w * progress);
+  if (w < 1) { w = 1; }
+  fill.sprite.SetImage(fill.base.Scale(w, 3));
+}
+Plymouth.SetBootProgressFunction(progress_cb);
+
+# ---- disk unlock prompt ----
+prompt.sprite = Sprite();
+dots.sprite = Sprite();
+
+fun password_cb(text, bullets) {
+  label = text;
+  if (label == "") { label = "UNLOCK"; }
+  prompt.image = Image.Text(label, 0.365, 0.792, 0.647, 1, "DejaVu Sans Mono 12");
+  prompt.sprite.SetImage(prompt.image);
+  prompt.sprite.SetX(cx - prompt.image.GetWidth() / 2);
+  prompt.sprite.SetY(bar_y + 24);
+  prompt.sprite.SetOpacity(1);
+  s = "";
+  i = 0;
+  while (i < bullets) { s = s + "* "; i = i + 1; }
+  if (s == "") { s = "_"; }
+  dots.image = Image.Text(s, 0.169, 0.831, 0.541, 1, "DejaVu Sans Mono Bold 14");
+  dots.sprite.SetImage(dots.image);
+  dots.sprite.SetX(cx - dots.image.GetWidth() / 2);
+  dots.sprite.SetY(bar_y + 48);
+  dots.sprite.SetOpacity(1);
+}
+Plymouth.SetDisplayPasswordFunction(password_cb);
+
+fun normal_cb() {
+  prompt.sprite.SetOpacity(0);
+  dots.sprite.SetOpacity(0);
+}
+Plymouth.SetDisplayNormalFunction(normal_cb);
+
+msg.sprite = Sprite();
+fun message_cb(text) {
+  msg.image = Image.Text(text, 0.882, 0.678, 0.306, 1, "DejaVu Sans Mono 11");
+  msg.sprite.SetImage(msg.image);
+  msg.sprite.SetX(cx - msg.image.GetWidth() / 2);
+  msg.sprite.SetY(Window.GetY() + Window.GetHeight() - 40);
+}
+Plymouth.SetMessageFunction(message_cb);

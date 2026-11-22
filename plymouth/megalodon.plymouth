@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Linux Megalodon
+Description=FLIPPER X family boot splash with a visible disk-unlock prompt
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/megalodon
+ScriptFile=/usr/share/plymouth/themes/megalodon/megalodon.script

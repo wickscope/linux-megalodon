@@ -1,0 +1,30 @@
+<svg viewBox="0 0 120 120" width="512" height="512" xmlns="http://www.w3.org/2000/svg" aria-label="Linux Megalodon">
+  <defs>
+    <radialGradient id="throat" cx="50%" cy="60%" r="50%">
+      <stop offset="0" stop-color="#2bd48a" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#06110d" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- dorsal + pectoral fins (FLIPPER X geometry, taller) -->
+  <path d="M60,1 L42,30 L78,30 Z" fill="#136b54" stroke="#5dcaa5" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M24,60 L0,82 L32,87 Z" fill="#136b54" stroke="#5dcaa5" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M96,60 L120,82 L88,87 Z" fill="#136b54" stroke="#5dcaa5" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- head: wider than the FLIPPER X shark -->
+  <path d="M60,15 C29,15 15,37 19,61 C22,89 42,106 60,106 C78,106 98,89 101,61 C105,37 91,15 60,15 Z" fill="#1d9e75" stroke="#5dcaa5" stroke-width="2"/>
+  <path d="M28,78 C38,97 52,105 60,105 C68,105 82,97 92,78 C78,86 42,86 28,78 Z" fill="#2bd48a" opacity="0.45"/>
+  <!-- three gill slits per side -->
+  <path d="M27,44 q-3,7 0,14 M33,42 q-3,8 0,16 M39,41 q-3,8 0,17" fill="none" stroke="#0a5141" stroke-width="1.6" opacity="0.7"/>
+  <path d="M93,44 q3,7 0,14 M87,42 q3,8 0,16 M81,41 q3,8 0,17" fill="none" stroke="#0a5141" stroke-width="1.6" opacity="0.7"/>
+  <!-- eyes: narrower, with a hard brow -->
+  <circle cx="45" cy="44" r="6.5" fill="#06110d"/><circle cx="75" cy="44" r="6.5" fill="#06110d"/>
+  <circle cx="45" cy="44" r="3.2" fill="#ffd36b"/><circle cx="75" cy="44" r="3.2" fill="#ffd36b"/>
+  <circle cx="46.4" cy="42.6" r="1" fill="#ffffff"/><circle cx="76.4" cy="42.6" r="1" fill="#ffffff"/>
+  <path d="M36,36 L53,40 M84,36 L67,40" stroke="#0a5141" stroke-width="2.4" stroke-linecap="round"/>
+  <!-- gaping jaw -->
+  <path d="M29,60 Q60,53 91,60 Q88,98 60,101 Q32,98 29,60 Z" fill="#06110d" stroke="#0a5141" stroke-width="1.2"/>
+  <ellipse cx="60" cy="82" rx="20" ry="10" fill="url(#throat)"/>
+  <!-- upper teeth row -->
+  <path d="M31,60 L35,73 L39,59.2 L43,74.5 L47,58.4 L51,76 L55,57.8 L60,77.5 L65,57.8 L69,76 L73,58.4 L77,74.5 L81,59.2 L85,73 L89,60 Q60,54 31,60 Z" fill="#eafff6"/>
+  <!-- lower teeth row -->
+  <path d="M38,91 L42,82 L46,94 L50,83 L54,97 L58,84.5 L60,99 L62,84.5 L66,97 L70,83 L74,94 L78,82 L82,91 Q72,100 60,100.5 Q48,100 38,91 Z" fill="#cdeedd"/>
+</svg>
